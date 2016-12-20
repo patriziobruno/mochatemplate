@@ -4,7 +4,7 @@
     <groupId>net.desertconsulting</groupId>
     <artifactId>mochatemplate</artifactId>
     <url>https://github.com/patriziobruno/mochatemplate</url>
-    <version>0.0.2</version>
+    <version>0.0.3</version>
     <packaging>jar</packaging>
     <distributionManagement>
         <snapshotRepository>
