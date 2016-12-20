@@ -11,7 +11,7 @@ It makes use of:
  - Reflections (https://github.com/ronmamo/reflections) for runtime loading of template-nodes interpreters
  - JDK native script engine (Nashorn for JDK8, Rhino for JDK7)
 
-To use the library in your application you can either instantiate MochaTemplateEngine from your servlet or add net.dstc.mochatemplate.servlet.MainServlet to your web.xml.
+To use the library in your application you can either instantiate MochaTemplateEngine from your servlet or add net.desertconsulting.mochatemplate.servlet.MainServlet to your web.xml.
 
 ###Test
 To run unit tests:
