@@ -1,2 +1,5 @@
 /nbproject/
-/target/
+/target
+/nb-configuration.xml
+nbactions.xml
+nbactions-release-profile.xml
