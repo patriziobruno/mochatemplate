@@ -29,6 +29,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
+import java.net.URL;
 import java.text.DecimalFormat;
 import java.text.DecimalFormatSymbols;
 import java.util.ArrayList;
@@ -122,8 +123,8 @@ public class MochaTemplateEngine implements TemplateEngine {
 
                 Iterator<Class<? extends TemplateAttributeParser>> iterator
                         = reflections.
-                        getSubTypesOf(TemplateAttributeParser.class).
-                        iterator();
+                                getSubTypesOf(TemplateAttributeParser.class).
+                                iterator();
 
                 while (iterator.hasNext()) {
                     Class<? extends TemplateAttributeParser> impl = iterator.
@@ -230,9 +231,9 @@ public class MochaTemplateEngine implements TemplateEngine {
 
         dom.html(output);
     }
-    
+
     private void doParse(Document.OutputSettings outputSettings) throws ScriptException, UnsupportedEncodingException, IOException {
-        
+
         parseGlobals();
 
         Node[] nodes = dom.childNodes().toArray(new Node[0]);
@@ -307,7 +308,12 @@ public class MochaTemplateEngine implements TemplateEngine {
         String rv;
         CacheFile file;
         try {
-            file = new CacheFile(servletContext.getResource(path).toURI());
+            URL resource = servletContext.getResource(path);
+            if (resource != null) {
+                file = new CacheFile(resource.toURI());
+            } else {
+                throw new IOException(String.format("file not found: %s", path));
+            }
         } catch (URISyntaxException ex) {
             Logger.getLogger(MochaTemplateEngine.class.getName()).
                     log(Level.SEVERE, null, ex);
@@ -352,7 +358,7 @@ public class MochaTemplateEngine implements TemplateEngine {
             if (!("template".equals(node.nodeName())
                     && node.hasAttr("data-type")
                     && "server/template".equals(node.attr("data-type")))) {
-                
+
                 TemplateNode dNode = new TemplateNode(node, bindings, jse, dom);
                 Bindings nodeBindings = dNode.getBindings();
 
@@ -396,7 +402,7 @@ public class MochaTemplateEngine implements TemplateEngine {
                     parseTextNode((TextNode) node, nodeBindings);
                 } else if ("#comment".equals(node.nodeName())
                         && node.attr("comment").trim().startsWith(
-                        "server-comment ")) {
+                                "server-comment ")) {
                     node.remove();
                 }
             }
@@ -459,9 +465,9 @@ public class MochaTemplateEngine implements TemplateEngine {
                 // thus the best chance to support ${expression} syntax, without switching to an external JS engine, 
                 // is to find it in text through a regular expression
                 Matcher matcher = INLINE_EXP_PATTERN.matcher(text);
-                
+
                 boolean found = false;
-                
+
                 while (matcher.find()) {
                     found = true;
                     String group = matcher.group(1);
@@ -528,7 +534,7 @@ public class MochaTemplateEngine implements TemplateEngine {
                     // the parser is expected to inform whether the processing of the current
                     // node has to continue
                     rv.setNeedsFurtherProcessing(parser.eval(node, args, this));
-                    
+
                     // this attribute has to be excluded from further evalutations
                     rv.setEvaluated(true);
                 }
