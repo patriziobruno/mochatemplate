@@ -11,6 +11,8 @@ deploy:
   file: target/mochatemplate-0.0.1.jar
   on:
     tags: true
+before_deploy:
+  - mvn install
 after_deploy:
   - mvn install deploy --settings deploy-settings.xml
 env:
