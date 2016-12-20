@@ -1,0 +1,13 @@
+
+<template data-type="server/template" id="person-details">
+    <!--
+    server-comment I used data-type instead of type, 'cause type is not a valid attribute for <template> in HTML5.
+    The whole node will be tossed anyway
+    -->
+    <h1 title="${person.name}"><a href="details.html?id=${id}">${id}</a> ${person.name}</h1>
+    <h2 data-if="person.married" title="${person.spouse}">Spouse:
+        ${person.spouse}</h2>
+    <div data-for-child="person.children">Child: ${child}</div>
+    <p>Number of children: ${n_children}</p>
+    <hr/>
+</template>

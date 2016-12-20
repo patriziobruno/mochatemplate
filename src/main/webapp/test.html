@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <script type="server/javascript" src="/server-side-js/java-entities.js">
+            var id = request.getParameter("id")
+            var person = Person.lookup(id)
+        </script>
+        <title>${person.name}</title>
+    </head>
+    <body>
+        <a href="details.html?id=${id}">&lt;&lt; back</a>
+        <h1>loops</h1>
+        <h2>Enumerable properties:</h2>
+        <ul>
+            <li data-for-p-i="person">${i}: ${p}</li>
+        </ul>
+        <h2>Range loop:</h2>
+        <ul>
+            <li data-for-p-idx="15...20">${idx}: ${p}</li>
+        </ul>
+        <h2>String char-by-char loop:</h2>
+        <ul>
+            <li data-for-p-i="'test'">${i}: ${p}</li>
+        </ul>
+        <h2>Array loop:</h2>
+        <ul>
+            <li data-for-p-i="['a', 1, 'bcd', 23, 63.2]">${i}: ${p}</li>
+        </ul>
+    </body>
+</html>

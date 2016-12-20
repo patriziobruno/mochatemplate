@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+        <!-- server-comment server-comments get removed by the parser -->
+        <!-- other comments are left intact -->
+    <head>
+        <title>Search</title>
+
+        <script type="server/javascript" src="/server-side/java-entities.js">
+            // this is a great place to nest a server-side javascript block
+            // but you can place it in an external file, if you prefer so
+            // or... both! Remember: src-file's path is relative to the
+            // servlet-context
+
+            var search = request.getParameter("search")
+            var persons = Person.search(search)
+            var template_path = '/server-side/template.html'
+        </script>
+            
+        <script type="text/javascript">
+            document.addEventListener("DOMContentLoaded", function () {
+                setTimeout(function () {
+                    var e = document.getElementById("search");
+                    e.focus();
+                    e.select();
+                });
+            });
+        </script>
+    </head>
+    <body>
+        <form>
+            <input type="text" id="search" name="search" value="${request.getParameter('search')}"/><button type="submit">Search</button>
+        </form>
+        <hr/>
+        
+        <!--
+        server-comment NOTE: data-* attributes get processed in order of appearance.
+        eg: person is available to data-set-id 'cause data-for-person-index appears before it,
+        inverting their positions will 'cause an error
+        -->
+        
+        <!--
+        server-comment NOTE: data-for can accept two arguments: the first will store an element selected from its value, the second (optional)
+        will hold the current index
+        -->
+        
+        <!-- server-comment NOTE: data-include can accept both CSS selectors, to include a template from the current DOM, and
+        a string with the format @template_path(:selector) to load the template from an external file -->
+        <!-- server-comment NOTE: there's no point in setting template_selector here, that's just for demo purpose -->
+        
+        <div data-for-person-index="persons"
+             data-set-id="person.id + 1"
+             data-set-n_children="person.children.size()"
+             data-set-template_selector="templateSelector()"
+             data-include="@${template_path}:${template_selector}">
+
+        <script type="server/javascript">
+            // every server-side javascript block is evaluated at template-load time and treated as global
+            // no matter where is nested
+            function templateSelector() {
+                return '#person-details';
+            }
+        </script>
+
+        </div>
+    </body>
+</html>
