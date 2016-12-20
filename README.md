@@ -2,7 +2,7 @@
 [![license](https://img.shields.io/github/license/patriziobruno/mochatemplate.svg)](https://raw.githubusercontent.com/patriziobruno/mochatemplate/master/LICENSE)
 [![Build Status](https://travis-ci.org/patriziobruno/mochatemplate.svg?branch=master)](https://travis-ci.org/patriziobruno/mochatemplate)
 [![Coverage Status](https://coveralls.io/repos/github/patriziobruno/mochatemplate/badge.svg?branch=master)](https://coveralls.io/github/patriziobruno/mochatemplate?branch=master)
-[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/10664.svg)](https://scan.coverity.com/projects/patriziobruno-mochatemplate)
+[![Coverity Scan Build Status](https://img.shields.io/coverity/scan/10664.svg)](https://scan.coverity.com/projects/patriziobruno/mochatemplate)
 
 A template library inspired by Adobe Sightly (https://docs.adobe.com/ddc/en/gems/introduction-to-sightly.html).
 
