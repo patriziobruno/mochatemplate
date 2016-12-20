@@ -26,7 +26,7 @@ import javax.script.ScriptException;
  * variable in the current Javascript context, available only to javascript expressions
  * nested into the parent node.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class SetAttributeParser extends TemplateAttributeParser {
 

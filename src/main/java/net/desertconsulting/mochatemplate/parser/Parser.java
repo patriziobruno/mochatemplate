@@ -24,7 +24,7 @@ import org.jsoup.nodes.Node;
 /**
  * This interface defines basic methods for a template parser.
  * 
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public interface Parser {
 

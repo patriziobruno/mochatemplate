@@ -15,7 +15,7 @@ import javax.servlet.http.HttpServletResponse;
 import org.jsoup.helper.StringUtil;
 
 /**
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class MainServlet extends HttpServlet {
 

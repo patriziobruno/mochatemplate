@@ -22,7 +22,7 @@ import java.util.concurrent.ConcurrentHashMap;
  * This utility class serves as cache for files. Used to cache external script
  * files and external templates.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  * @param <T> type of the file content to be cached
  */
 public class FileCache<T> {

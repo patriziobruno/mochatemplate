@@ -23,7 +23,7 @@ import org.jsoup.nodes.Document;
 /**
  * This interface defines template engines
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public interface TemplateEngine {
 

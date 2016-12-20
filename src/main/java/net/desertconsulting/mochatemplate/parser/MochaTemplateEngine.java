@@ -61,7 +61,7 @@ import org.reflections.Reflections;
 /**
  * This class handles all the template parsing.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class MochaTemplateEngine implements TemplateEngine {
 

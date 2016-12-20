@@ -22,7 +22,7 @@ import org.jsoup.nodes.Attribute;
  * This class is a container for an attribute to be passed to a
  * {@link TemplateAttributeParser}. It parses and validates attribute data.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class AttributeParserArguments {
 

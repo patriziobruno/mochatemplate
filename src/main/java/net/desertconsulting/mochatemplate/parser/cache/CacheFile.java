@@ -22,7 +22,7 @@ import java.util.Objects;
 /**
  * This class serves as container for file information on files to be cached.
  * 
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class CacheFile {
 

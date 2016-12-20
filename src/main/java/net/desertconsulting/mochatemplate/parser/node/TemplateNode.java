@@ -23,7 +23,7 @@ import org.jsoup.nodes.Node;
 /**
  * Container for a {@link Node} to be parsed.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class TemplateNode {
 

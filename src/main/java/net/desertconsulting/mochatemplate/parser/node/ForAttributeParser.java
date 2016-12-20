@@ -47,7 +47,7 @@ import org.jsoup.nodes.Node;
  * variable containing the current index: a number for lists, arrays and strings
  * and a string for objects.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class ForAttributeParser extends TemplateAttributeParser {
 

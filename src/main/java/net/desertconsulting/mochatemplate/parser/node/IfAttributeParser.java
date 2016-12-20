@@ -27,7 +27,7 @@ import org.jsoup.helper.StringUtil;
  * expression and if the result is false (=== false || === 0 || === ''), the
  * parent node will be removed from the DOM.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class IfAttributeParser extends TemplateAttributeParser {
 

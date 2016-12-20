@@ -24,7 +24,7 @@ import javax.script.ScriptException;
  * This attribute parser supports data-ignore attribute, any other template related
  * stuff in the parent node will be ignored when this attribute is encountered.
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class IgnoreAttributeParser extends TemplateAttributeParser {
 

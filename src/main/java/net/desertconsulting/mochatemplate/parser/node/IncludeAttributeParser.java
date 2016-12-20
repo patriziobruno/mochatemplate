@@ -51,7 +51,7 @@ import org.jsoup.select.Elements;
  * <li>data-include="@/templates/details.html:#customer"</li>
  * </ul>
  *
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public class IncludeAttributeParser extends TemplateAttributeParser {
 

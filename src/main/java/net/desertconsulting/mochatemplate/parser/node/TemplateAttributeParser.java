@@ -23,7 +23,7 @@ import javax.script.ScriptException;
 /**
  * This serves as a base class to create template node's attributes parsers.
  * 
- * @author Patrizio Bruno <desertconsulting@gmail.com>
+ * @author Patrizio Bruno {@literal <desertconsulting@gmail.com>}
  */
 public abstract class TemplateAttributeParser {
 
