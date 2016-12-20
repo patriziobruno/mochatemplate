@@ -8,7 +8,7 @@ deploy:
   provider: releases
   api_key:
     secure: MzAZ4niPBXltGCUoszrm7cILD37IgMtg9omoKsWv8IHJ3aTGdBTJ4M97jw9+sgJEIRnUtal95DqOB4McuG9ziQb4kYWNH8WuUQJPxkWQs7mULj3KZHgs0I+ofV+p6x0trAy7zfiG9/eSsL46jYKUxawuSlF7vtU0EfRhHOwtceogpDu8F/AmfqbYCy1vT7/0fivMzXTNrIxVYeiYsFlTv8+B+cW0mHF3MWv1B5Xi7q9ElHhK6tlUaSvfaEVOmQ/3LWzIldG+lhzIrIpflHkG2dlI3DdoSp+CTGJXAiMXFhJbR/sRrsI8LO/G7T/4no++ST0Ny33ZdinG48MOL+ixhZtgEAEtiGroGwOKbnJ1ZK4A1O7SKNIbrdAHVFBpJjDvgqD34rbZcdGtU4MHp/ryWinqzPldD5m+qfTRkwj8Pc7/HEje6ksu2ENlsUCqzid2pfyyQo+ytsdmHozpEaeV6J0XBV++KAnh0gsPSBBTdq6f15XKbBfrKNgzCmK/4rx44NwrV0cHUphvT32HQ2ntvcYkzeoanxL6hLPfOai454VbFeFAneUMLrgNi5QOZd6zxUo9bWlV6d7Y+dF9MfpwbTvTkiU6AGsoPGUBJffzXQfZUFu45pCxnRRMER3/YVE5UtQ4c5r937yKN07IBQlGa2A7i+ms1S5vrMdxhQDuDe4=
-  file: target/mochatemplate-0.0.1.jar
+  file: target/mochatemplate-0.0.2.jar
   on:
     tags: true
 before_deploy:
