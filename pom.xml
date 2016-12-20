@@ -3,6 +3,21 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>net.desertconsulting</groupId>
     <artifactId>mochatemplate</artifactId>
+    <name>MochaTemplate</name>
+    <description>A template library inspired by Adobe Sightly (https://docs.adobe.com/ddc/en/gems/introduction-to-sightly.html), using Javascript for the scripting.</description>
+    <developers>
+        <developer>
+            <id>patriziobruno</id>
+            <name>Patrizio Bruno</name>
+            <email>desertconsulting@gmail.com</email>
+            <roles>
+                <role>architect</role>
+                <role>developer</role>
+            </roles>
+            <timezone>Europe/Rome</timezone>
+            <url>https://github.com/patriziobruno</url>
+        </developer>
+    </developers>
     <url>https://github.com/patriziobruno/mochatemplate</url>
     <version>0.0.5</version>
     <packaging>jar</packaging>
@@ -69,7 +84,7 @@
                     </execution>
                 </executions>
             </plugin>
-<!--            <plugin>
+            <!--            <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-gpg-plugin</artifactId>
                 <version>1.5</version>
