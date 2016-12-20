@@ -1,10 +1,28 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>net.dstc</groupId>
+    <groupId>net.desertconsulting</groupId>
     <artifactId>mochatemplate</artifactId>
+        <url>https://github.com/patriziobruno/mochatemplate</url>
     <version>0.0.1</version>
     <packaging>jar</packaging>
+    <repositories>
+        <repository>
+            <id>sonatype-nexus-snapshots</id>
+            <url>https://oss.sonatype.org/content/repositories/snapshots</url>
+        </repository>
+    </repositories>
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0</url>
+            <comments>Copyright (c) 2016 Amherst College</comments>
+        </license>
+    </licenses>
+    <scm>
+        <connection>scm:git:https://github.com/patriziobruno/mochatemplate.git</connection>
+        <url>https://github.com/patriziobruno/mochatemplate</url>
+    </scm>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <maven.compiler.source>1.7</maven.compiler.source>
@@ -56,7 +74,7 @@
                     </execution>
                 </executions>
             </plugin>
-              <plugin>
+            <plugin>
                 <groupId>org.eluder.coveralls</groupId>
                 <artifactId>coveralls-maven-plugin</artifactId>
                 <version>4.3.0</version>

@@ -2,8 +2,8 @@
 // let's try to keep compatibility as much as possible
 
 if (jvmVersion === '8') {
-    var scope = new JavaImporter(Packages.net.dstc.mochatemplate);
+    var scope = new JavaImporter(Packages.net.desertconsulting.mochatemplate.examples);
     Person = scope.Person;
 } else {
-    importClass(Packages.net.dstc.mochatemplate.Person)
+    importClass(Packages.net.desertconsulting.mochatemplate.examples.Person)
 }

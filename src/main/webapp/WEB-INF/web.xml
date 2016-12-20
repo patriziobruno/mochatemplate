@@ -3,7 +3,7 @@
     <display-name>MochaServer</display-name>
     <servlet>
         <servlet-name>main</servlet-name>
-        <servlet-class>net.dstc.mochatemplate.servlet.MainServlet</servlet-class>
+        <servlet-class>net.desertconsulting.mochatemplate.servlet.MainServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>main</servlet-name>
