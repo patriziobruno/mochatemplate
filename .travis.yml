@@ -1,9 +1,22 @@
+sudo: required
+
 dist: trusty
 
-language: java
+env:
+  global:
+   # The next declaration is the encrypted COVERITY_SCAN_TOKEN, created
+   #   via the "travis encrypt" command using the project repo's public key
+   - secure: "oiTz0PvD4aBPpSVbpzMFEOqGwOhbdXYVEJ0d0BDlkqwV2XTb6RlUyxeWFL0nT7o3saMp8rZbqbxydDiCnNcKHopwVqvhPj7kV44E5soep6e9pXZc2ErCPkD346I8w7jM31qMBQAoIRM6NRJ6F4g3Hs8rlueepCdB6wpIw7DpKi91f46e2JeoOt4coYS4VzaLl/bHfnrufpCODCFDcD8P4QjejM3jdjBS0Mf+hZkjcexXPhdUyGPRdwvdoo0il3s03kx5nGr461pf+ikqI5buw5+xOiTevb7x4LmcbzQXbAgCtS1kiEkj35aCOHQ9+zHEPRX0oeS6ggkGUO1u3s5tHuz55xG8gbPivCO3N/3mLpQtUGRRobexZnwyGYkAEUPH3QqzycA1/t4SdSqLtErHBfdv3cVkw1zU6QJscqjyyNKQxQJOTD0DFs9O1KUmOaWdAZYLiOV0EDUt3qVKrsGq1z8deT6S9sm4fXy6V5S5qQJU6QPUbJjp/UckOjzMAbBdwkoJy2w0cX/+H2aEbggHs54q4zx2f2Z/fO4PfSBkD/rwLmlUcdcH1IHqsdcb9gUF4OVUqEHevggatN+h+aaTg20pvoFI1xX8QzC7mdzljJmZC4GqyORza7uFj1W1s7UG0Ix+en8jd9lLKMNeD76H69+AHleZLVCvrqfN2mOGSkk="
 
-jdk:
-  - oraclejdk8
-  
-after_success:
-  - mvn clean -DTRAVIS_JOB_ID=$TRAVIS_JOB_ID test jacoco:report coveralls:report
+before_install:
+      - echo -n | openssl s_client -connect scan.coverity.com:443 | sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' | sudo tee -a /etc/ssl/certs/ca-
+
+addons:
+  coverity_scan:
+    project:
+      name: "patriziobruno/mochatemplate"
+      description: "MochaTemplate is a template engine inspired by Adobe Sightly"
+    notification_email: desertconsulting@gmail.com
+    build_command_prepend: "mvn clean"
+    build_command:   "mvn -DskipTests=true compile"
+    branch_pattern: coverity_scan
