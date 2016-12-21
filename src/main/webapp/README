@@ -1,0 +1,5 @@
+To run this example launch the command
+
+mvn jetty:run
+
+from the project's source directory
