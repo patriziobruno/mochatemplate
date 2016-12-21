@@ -1,10 +1,15 @@
 dist: trusty
 language: java
+addons:
+  apt:
+    sources:
+      - gnupg-agent
 jdk:
 - oraclejdk8
 before_install:
 - openssl aes-256-cbc -pass pass:$ENC_PWD -in secring.gpg.enc -out local.secring.gpg -d
 - openssl aes-256-cbc -pass pass:$ENC_PWD -in pubring.gpg.enc -out local.pubring.gpg -d
+- gpg-agent --homedir $HOME/.gnupg --use-standard-socket --daemon
 - gpg --import local.secring.gpg
 - gpg --import local.pubring.gpg
 
