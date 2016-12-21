@@ -31,7 +31,7 @@ function add(e) {
     };
     $.ajax({
         method: 'PUT'
-        , url: 'api/person.api'
+        , url: 'api/person.api?id=' + (parseInt($('#id').val()) + 1)
         , data: JSON.stringify(saveRequest)
         , dataType: 'json'
         , contentType: 'application/json; charset=UTF-8'
@@ -56,6 +56,7 @@ $(function () {
             <input id="${field}" type="text" value="${value}"/>
             <br/>
         </div>
+        <input type="hidden" id="id" value="${person.id}"/>
         <button type="button" id="save">Save</button>
     </body>
 </html>

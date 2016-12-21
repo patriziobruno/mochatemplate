@@ -58,17 +58,19 @@ public class Person {
 
     public static void add(Person person) {
         if (person.id == -1) {
-            person.id = STATIC_PERSON.size() - 1;
+            person.id = STATIC_PERSON.size();
             STATIC_PERSON.add(person);
         } else {
             Person p = lookup(Integer.toString(person.id + 1));
-            p.name = person.name;
+            p.setName(person.name);
             p.setSpouse(person.spouse);
         }
     }
 
     public static List<Person> search(String name) {
+        
         List<Person> rv;
+        
         if (name != null) {
             rv = new ArrayList<>();
             for (Person person : STATIC_PERSON) {
