@@ -25,7 +25,7 @@ deploy:
   on:
     tags: true
 before_deploy:
-- mvn generate-sources javadoc:jar
+- mvn install generate-sources javadoc:jar
 after_deploy:
 - mvn deploy --settings deploy-settings.xml
 env:
