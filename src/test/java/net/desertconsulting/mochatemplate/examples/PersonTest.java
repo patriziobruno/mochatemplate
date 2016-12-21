@@ -108,7 +108,7 @@ public class PersonTest {
     public void testGetId() {
         System.out.println("getId");
         Person instance = new Person();
-        int expResult = 0;
+        int expResult = -1;
         int result = instance.getId();
         assertEquals(expResult, result);
     }

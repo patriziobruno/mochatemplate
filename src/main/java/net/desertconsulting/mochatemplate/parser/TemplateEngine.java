@@ -37,7 +37,7 @@ public interface TemplateEngine {
      * @return HTML document
      * @throws ScriptException javascript syntax error
      * @throws UnsupportedEncodingException
-     * @throws IOException error loading the template or one of its external
+     * @throws IOException error loading the template or one of its external files
      * resource
      */
     String parse(Document.OutputSettings outputSettings) throws ScriptException,
@@ -51,12 +51,32 @@ public interface TemplateEngine {
      * @param outputSettings HTML generation settings
      * @throws ScriptException javascript syntax error
      * @throws UnsupportedEncodingException
-     * @throws IOException error loading the template or one of its external
+     * @throws IOException error loading the template or one of its external files
      * resource
      */
     void parse(Appendable output, Document.OutputSettings outputSettings) throws
             ScriptException, UnsupportedEncodingException,
             IOException;
+
+    /**
+     * Runs the scripts in the loaded template and writes the scripts' output on
+     * the stream {@code output}.
+     *
+     * @param output output stream
+     * @param outputFormat outputFormat (JSON/XML)
+     * @throws ScriptException javascript syntax error
+     * @throws IOException error loading the template or one of its external files
+     */
+    void exec(Appendable output, ApiOutputFormat outputFormat) throws ScriptException, IOException;
+
+    /**
+     * Runs the scripts in the loaded template.
+     *
+     * @throws ScriptException javascript syntax error
+     * @throws IOException error loading the template or one of its external files
+     * @return result of the executed script.
+     */
+    Object exec() throws ScriptException, IOException;
 
     /**
      * Adds a variable to be made available to the Javascript engine.
@@ -65,4 +85,14 @@ public interface TemplateEngine {
      * @param value value of the variable
      */
     void put(String key, Object value);
+
+    /**
+     * Adds a variable to be made available to the Javascript engine after
+     * parsing it as JSON.
+     *
+     * @param key name of the variable
+     * @param value value of the variable
+     * @throws ScriptException error parsing the value
+     */
+    void putJson(String key, String value) throws ScriptException;
 }

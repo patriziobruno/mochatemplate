@@ -3,6 +3,7 @@ package net.desertconsulting.mochatemplate.examples;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
+import org.jsoup.helper.StringUtil;
 
 public class Person {
 
@@ -26,6 +27,7 @@ public class Person {
         this.name = "";
         this.married = false;
         this.spouse = "";
+        this.id = -1;
         children = Collections.emptyList();
     }
 
@@ -51,6 +53,17 @@ public class Person {
             }
         } else {
             return new Person(0, "Empty Name", "Empty spouse", false, 0);
+        }
+    }
+
+    public static void add(Person person) {
+        if (person.id == -1) {
+            person.id = STATIC_PERSON.size() - 1;
+            STATIC_PERSON.add(person);
+        } else {
+            Person p = lookup(Integer.toString(person.id + 1));
+            p.name = person.name;
+            p.setSpouse(person.spouse);
         }
     }
 
@@ -91,6 +104,7 @@ public class Person {
 
     public void setSpouse(String spouse) {
         this.spouse = spouse;
+        married = !StringUtil.isBlank(this.spouse);
     }
 
     public boolean isMarried() {

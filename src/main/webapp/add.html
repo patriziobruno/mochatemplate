@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<!--
+Copyright 2016 eul0860.
+
+Licensed under the Apache License, Version 2.0 (the "License");
+you may not use this file except in compliance with the License.
+You may obtain a copy of the License at
+
+     http://www.apache.org/licenses/LICENSE-2.0
+
+Unless required by applicable law or agreed to in writing, software
+distributed under the License is distributed on an "AS IS" BASIS,
+WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+See the License for the specific language governing permissions and
+limitations under the License.
+-->
+<html>
+    <head>
+        <script type="server/javascript" src="/server-side/java-entities.js">
+            var person = new Person();
+        </script>
+        <script src="http://code.jquery.com/jquery-3.1.1.min.js"></script>
+        <script type="text/javascript">
+function add(e) {
+    e.preventDefault();
+    $('input').prop('disabled', true);
+    var saveRequest = {
+      name: $('#name').val()
+      , spouse: $('#spouse').val()
+    };
+    $.ajax({
+        method: 'POST'
+        , url: 'api/person.api'
+        , data: JSON.stringify(saveRequest)
+        , dataType: 'json'
+        , contentType: 'application/json; charset=UTF-8'
+    }).done(function () {
+        window.location.href = 'index.html';
+    }).fail(function () {
+        alert(JSON.stringify(arguments));
+    }).always(function () {
+        $('input').prop('disabled', false);
+    });
+}
+$(function () {
+    $('#save').click(add);
+});
+        </script>
+        <title>Add a person</title>
+    </head>
+    <body>
+        <a href="index.html">&lt;&lt; back</a>
+        <div data-for-x-field="person" data-if="field != 'children' && field != 'id'">
+            <label for="${field}">${field}</label><br/>
+            <input id="${field}" type="text"/>
+            <br/>
+        </div>
+        <button type="button" id="save">Save</button>
+    </body>
+</html>

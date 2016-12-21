@@ -15,6 +15,8 @@
  */
 package net.desertconsulting.mochatemplate.parser;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.dataformat.xml.XmlMapper;
 import net.desertconsulting.mochatemplate.parser.cache.CacheFile;
 import net.desertconsulting.mochatemplate.parser.cache.FileCache;
 import net.desertconsulting.mochatemplate.parser.node.AttributeParserArguments;
@@ -28,6 +30,7 @@ import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.UnsupportedEncodingException;
+import java.io.Writer;
 import java.net.URISyntaxException;
 import java.net.URL;
 import java.text.DecimalFormat;
@@ -232,6 +235,28 @@ public class MochaTemplateEngine implements TemplateEngine {
         dom.html(output);
     }
 
+    @Override
+    public void exec(Appendable output, ApiOutputFormat outputFormat) throws ScriptException, IOException {
+        Object val = exec();
+        ObjectMapper mapper;
+        switch(outputFormat) {
+            case JSON:
+                mapper = new ObjectMapper();
+                break;
+            case XML:
+                mapper = new XmlMapper();
+                break;
+            default:
+                throw new ApiOutputFormatException(String.format("'%s' is not a supported output format", outputFormat.toString()));
+        }
+        mapper.writeValue((Writer) output, val);
+    }
+
+    @Override
+    public Object exec() throws ScriptException, IOException {
+        return parseGlobals();
+    }
+
     private void doParse(Document.OutputSettings outputSettings) throws ScriptException, UnsupportedEncodingException, IOException {
 
         parseGlobals();
@@ -260,6 +285,12 @@ public class MochaTemplateEngine implements TemplateEngine {
         jse.put(key, value);
     }
 
+    @Override
+    public void putJson(String key, String value) throws ScriptException {
+        jse.put(key, value);
+        jse.put(key, jse.eval(String.format("JSON.parse(%s)", key)));
+    }
+
     /**
      * This method retrieves every <script type="server/javascript"> in the
      * template, loads external script files and evaluates all the found scripts
@@ -269,7 +300,7 @@ public class MochaTemplateEngine implements TemplateEngine {
      * @throws ScriptException syntax error evaluating a script
      * @throws IOException error trying to load an external script
      */
-    private void parseGlobals() throws ScriptException, IOException {
+    private Object parseGlobals() throws ScriptException, IOException {
         Element[] globals = dom.select(SCRIPT_SELECTOR).
                 toArray(new Element[0]);
 
@@ -289,8 +320,9 @@ public class MochaTemplateEngine implements TemplateEngine {
         }
 
         if (!StringUtil.isBlank(script)) {
-            jse.eval(script);
+            return jse.eval(script);
         }
+        return null;
     }
 
     private final static FileCache<String> SCRIPT_CACHE = new FileCache<>();

@@ -1,0 +1,20 @@
+<script type="server/javascript" src="/server-side/java-entities.js">
+    function add() {
+        var person = new Person();
+        person.name = mochaRequestObject.name;
+        person.spouse = mochaRequestObject.spouse;
+        Person.add(person);
+        return mochaRequestObject;
+    }
+    function edit() {
+        var person = Person.lookup(request.getParameter('id'));
+        person.name = mochaRequestObject.name;
+        person.spouse = mochaRequestObject.spouse;
+        Person.add(person);
+    }
+    var handlers = {
+        'POST': add
+        , 'PUT': edit
+    };
+    handlers[request.getMethod()]();
+</script>

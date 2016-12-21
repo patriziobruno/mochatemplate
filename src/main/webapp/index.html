@@ -23,12 +23,16 @@
                     e.focus();
                     e.select();
                 });
+                document.getElementById('add').addEventListener('click', function() {
+                    window.location.href = 'add.html';
+                });
             });
         </script>
     </head>
     <body>
         <form>
             <input type="text" id="search" name="search" value="${request.getParameter('search')}"/><button type="submit">Search</button>
+            <button type="button" id="add">Add person</button>
         </form>
         <hr/>
         
