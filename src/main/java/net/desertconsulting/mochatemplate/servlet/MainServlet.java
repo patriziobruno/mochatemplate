@@ -1,21 +1,14 @@
 package net.desertconsulting.mochatemplate.servlet;
 
-import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.dataformat.xml.XmlMapper;
-import java.io.BufferedInputStream;
 import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileReader;
 import net.desertconsulting.mochatemplate.parser.MochaTemplateEngine;
 import net.desertconsulting.mochatemplate.parser.TemplateEngine;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintWriter;
-import java.io.StringReader;
-import java.io.StringWriter;
-import java.nio.CharBuffer;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.script.ScriptException;
