@@ -320,7 +320,7 @@ public class MainServletTest {
     public void testGetServletInfo() {
         System.out.println("getServletInfo");
         MainServlet instance = new MainServlet();
-        String expResult = "Short description";
+        String expResult = "MochaTemplate servlet";
         String result = instance.getServletInfo();
         assertEquals(expResult, result);
     }
