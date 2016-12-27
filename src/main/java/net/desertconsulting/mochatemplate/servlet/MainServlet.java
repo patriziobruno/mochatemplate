@@ -26,6 +26,8 @@ import org.jsoup.helper.StringUtil;
  */
 public class MainServlet extends HttpServlet {
 
+    private String apiExtension;
+
     /**
      * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
      * methods.
@@ -53,7 +55,7 @@ public class MainServlet extends HttpServlet {
 
                     template.put("request", request);
 
-                    if (pathInfo.endsWith(".api")) {
+                    if (pathInfo.endsWith(apiExtension)) {
                         processREST(template, request, response, out);
                     } else {
                         response.setContentType("text/html;charset=UTF-8");
@@ -91,7 +93,7 @@ public class MainServlet extends HttpServlet {
                 engine.putJson("mochaRequestObject", sb.toString());
             }
 
-            switch(request.getMethod()) {
+            switch (request.getMethod()) {
                 case "POST":
                     response.setStatus(HttpServletResponse.SC_CREATED);
             }
@@ -167,6 +169,15 @@ public class MainServlet extends HttpServlet {
         processRequest(request, response);
     }
 
+    @Override
+    public void init() throws ServletException {
+        super.init();
+        apiExtension = getInitParameter("apiExtension");
+        if(StringUtil.isBlank(apiExtension)) {
+            apiExtension = ".api";
+        }
+    }
+    
     /**
      * Returns a short description of the servlet.
      *
@@ -174,6 +185,6 @@ public class MainServlet extends HttpServlet {
      */
     @Override
     public String getServletInfo() {
-        return "Short description";
+        return "MochaTemplate servlet";
     }// </editor-fold>
 }
