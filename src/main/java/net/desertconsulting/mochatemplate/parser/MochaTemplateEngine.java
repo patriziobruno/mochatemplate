@@ -292,9 +292,9 @@ public class MochaTemplateEngine implements TemplateEngine {
     }
 
     /**
-     * This method retrieves every <script type="server/javascript"> in the
+     * This method retrieves every &lt;script type="server/javascript"&gt; in the
      * template, loads external script files and evaluates all the found scripts
-     * through. {@link ScriptEngine.eval(String,Bindings)} to initialize the
+     * through. {@link ScriptEngine#eval(String,Bindings)} to initialize the
      * current {@link ScriptContext}.
      *
      * @throws ScriptException syntax error evaluating a script
@@ -329,7 +329,7 @@ public class MochaTemplateEngine implements TemplateEngine {
 
     /**
      * Load external server-side javascripts, referenced by HTML tag
-     * <script type="server/javascript" src="externalScript.js">
+     * &lt;script type="server/javascript" src="externalScript.js"&gt;
      *
      * @param path path to the external script. It is relative to the
      * {@link ServletContext} path.
@@ -542,8 +542,8 @@ public class MochaTemplateEngine implements TemplateEngine {
          * @param attr attribute to be evaluated
          * @param node the attribute's parent node
          * @return an evaluation result with
-         * {@link EvalResult.needsFurtherProcessing} = true if the node hasn't
-         * been removed from the dom, and {@link EvalResult.isEvaluated} = true
+         * {@link EvalResult#needsFurtherProcessing} = true if the node hasn't
+         * been removed from the dom, and {@link EvalResult#isEvaluated} = true
          * if a parser for the attribute has been found.
          * @throws ScriptException syntax error in the attribute's value
          * @throws UnsupportedEncodingException
