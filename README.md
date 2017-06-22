@@ -13,7 +13,7 @@ It makes use of:
 
 To use the library in your application you can either instantiate MochaTemplateEngine from your servlet or add net.desertconsulting.mochatemplate.servlet.MainServlet to your web.xml.
 
-###Test
+### Test
 To run unit tests:
 ```bash
 $ mvn test
@@ -24,7 +24,7 @@ To run a jetty instance serving the included example:
 $ mvn jetty:run
 ```
 
-###Example template
+### Example template
 ```html
 <html>
   <head>
